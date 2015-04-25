@@ -1,5 +1,4 @@
-class Admin::DashboardController < ApplicationController
-  # before_filter :authenticate_user!
+class Admin::DashboardController < Admin::ApplicationController
 
   # GET /admin/dashboard
   # GET /admin/dashboard.json
