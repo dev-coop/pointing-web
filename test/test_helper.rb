@@ -1,8 +1,9 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
-require "minitest/pride"  # Uncomment for awesome colorful output
+require 'minitest/pride'  # Uncomment for awesome colorful output
 require 'minitest/autorun'
+require 'capybara/rails'
 
 class ActiveSupport::TestCase
   # JR 2015-04-25 Let's use factories (with Factory_Girl) instead of fixtures

@@ -2,8 +2,8 @@ FactoryGirl.define do
   
   factory :user do
     sequence(:email) {|n| "user#{n}@example.com"}
-    password "pass1234"
-    password_confirmation "pass1234"
+    password "Pass1234"
+    password_confirmation { |u| u.password } 
     
     trait :admin do
       is_admin true
