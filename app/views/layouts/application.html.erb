@@ -1,27 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PointingWeb</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>Pointing Admin</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="wrapper">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+      <div class="navbar-header">
 
-<aside>
-  <%= render_navigation %>
-</aside>
+        <!-- menu button for mobile sizes -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<% if user_signed_in? %>
-  <%= current_user.email %> |
-  <%= link_to destroy_user_session_path, method: :delete do %>
-    <span>Logout</span>
-  <% end %>
-<% end %>
+        <!-- logo -->
+        <%= link_to root_url, class: 'navbar-brand' do %> <i class="logo-arrow fa fa-location-arrow fa-2x"></i>
+          Pointing &nbsp;Administration
+        <% end %>
 
-<%= yield %>
+      </div><!-- end navbar-header -->
 
+      <!-- top navbar menus -->
+      <%= render 'shared/user_menu' if user_signed_in? %>
+
+      <!-- primary navigation sidebar -->
+      <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+          <%= render_navigation(:level =>1..2, :expand_all => true) %>
+        </div>
+      </div>
+      
+    </nav>
+    
+    <!-- flash messages for error, success, notice, warning etc. -->
+    <div class="page-wrapper-marginless">
+      <%= render 'shared/flash_messages' %>
+    </div>
+           
+    <%= yield -%>
+         
+  </div>
 </body>
 </html>

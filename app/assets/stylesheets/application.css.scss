@@ -1,0 +1,66 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require 'bootstrap/dist/css/bootstrap.min'
+ *= require 'metisMenu/dist/metisMenu.min'
+ *= require 'startbootstrap-sb-admin-2/dist/css/sb-admin-2'
+ *= require 'font-awesome/css/font-awesome.min'
+ *= require_tree .
+ *= require_self
+ */
+
+// DIVIDERS AND SPACERS
+
+.divider {
+  display: block;
+  height: 10px;
+}
+.divider-sm { height: 15px; }
+.divider-md { height: 20px; }
+.divider-lg { height: 30px; }
+.divider-xl { height: 50px; }
+
+.space {
+  display: inline;
+  padding: 5px;
+}
+.space-md { padding: 15px; }
+.space-lg { padding: 25px; }
+
+// HTML, BODY, WRAPPERS
+.page-wrapper-marginless {
+  position: inherit;
+  margin: 0 0 0 250px;
+  padding: 0px;
+}
+
+// HEADER
+
+.logo-arrow {
+  float:left;
+  position: absolute;
+  top: 4px;
+  margin-left: 58px;
+  font-size: 150%;
+}
+.logo-text   {
+  
+}
+
+// FOOTER
+
+// NAVIGATION
+
+// give some right padding to fa icons in the side nav
+ul#side-menu li a i.fa {
+  margin-right: 4px;
+}
