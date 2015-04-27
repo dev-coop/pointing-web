@@ -36,6 +36,7 @@ gem 'awesome_print'
 gem 'devise'
 gem 'simple-navigation'
 gem 'bower-rails'
+gem 'geocoder'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
