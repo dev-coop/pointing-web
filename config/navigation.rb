@@ -21,7 +21,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
     if user_signed_in? && current_user.is_admin?
       primary.item :dashboard, 'Dashboard|dashboard', root_path
-      primary.item :dashboard, 'Locations|map-marker', '#locations'
+      primary.item :dashboard, 'Locations|map-marker', admin_locations_path
       primary.item :dashboard, 'App Sessions|compass', '#app-sessions'
       primary.item :dashboard, 'API Health|heartbeat', '#api-health'
      
