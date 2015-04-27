@@ -22,7 +22,7 @@ class LoginTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
     follow_redirect!
     # the Dashboard page should have ul#nav, and an h1, etc.
-    assert_select "ul#nav"
+    assert_select "ul#side-menu"
     assert_select "h1", {html: 'Dashboard'}
   end
 
@@ -32,10 +32,10 @@ class LoginTest < ActionDispatch::IntegrationTest
     assert_response :success    
 
     # expect a nav list to be empty
-    assert_select 'ul#nav>li', {count: 0}
+    assert_select 'ul#side-menu>li', {count: 0}
 
     # expect a flash message to be present
-    assert_select "p.alert", {html: 'Invalid email or password.'}
+    assert_select "div.alert", {text: /Invalid email or password/}
 
   end
 

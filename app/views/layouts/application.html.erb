@@ -12,7 +12,6 @@
 </head>
 <body>
   <div class="wrapper">
-
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
       <div class="navbar-header">
 
@@ -40,11 +39,16 @@
           <%= render_navigation(:level =>1..2, :expand_all => true) %>
         </div>
       </div>
-
+      
     </nav>
-
+    
+    <!-- flash messages for error, success, notice, warning etc. -->
+    <div class="page-wrapper-marginless">
+      <%= render 'shared/flash_messages' %>
+    </div>
+           
     <%= yield -%>
-
+         
   </div>
 </body>
 </html>
