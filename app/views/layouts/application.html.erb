@@ -8,6 +8,7 @@
   <title>Pointing Admin</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= yield :head %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -25,7 +26,7 @@
 
         <!-- logo -->
         <%= link_to root_url, class: 'navbar-brand' do %> <i class="logo-arrow fa fa-location-arrow fa-2x"></i>
-          Pointing &nbsp;Administration
+        Pointing &nbsp;Administration
         <% end %>
 
       </div><!-- end navbar-header -->
@@ -46,9 +47,12 @@
     <div class="page-wrapper-marginless">
       <%= render 'shared/flash_messages' %>
     </div>
-           
-    <%= yield -%>
-         
+    
+    <!-- start main content -->
+    <div id="page-wrapper" style="min-height: 350px;">
+        <%= yield -%>
+    </div>
+    <!-- end main content -->
   </div>
 </body>
 </html>

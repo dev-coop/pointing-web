@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Locations</h1>
+    <div class="panel">
+      <div class="panel-footer">
+        <%= link_to 'New Location', new_admin_location_path, class: 'btn btn-default btn-outline' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= search_form_for [:admin, @q], class: 'form-inline' do |f| %>
+  <div class="row">
+    <div class="col-sm-6">
+      Show <%= select_tag :per_page,  options_for_select([10, 20, 50, 100], params[:per_page]), class: 'form-control', onchange: '$("#location_search").submit();' %> entries
+    </div>
+    <div class="col-sm-6">
+      <div class="search-form pull-right">
+        <div class="form-group">
+          <label>Search <%= f.search_field :name_or_address_cont, placeholder: "Name or Address", class: 'form-control', style: 'width=130%' %>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="divider-sm"></div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped table-bordered table-hover dataTable no-footer" >
+      <thead>
+        <tr>
+          <th><%= sort_link(@q, :name) %></th>
+          <th><%= sort_link(@q, :address) %></th>
+          <th><%= sort_link(@q, :lat) %>, <%= sort_link(@q, :lng) %></th>
+          <th><%= sort_link(@q, :elevation) %></th>
+          <th><%= sort_link(@q, :last_geocoded_at) %></th>
+          <th><%= sort_link(@q, :status) %></th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @locations.each do |location| %>
+        <tr>
+          <td><%= location.name %></td>
+          <td><%= location.address %></td>
+          <td><%= location.lat %>, <%= location.lng %></td>
+          <td><%= location.elevation.to_i %> m</td>
+          <td><%= l(location.last_geocoded_at.to_date, format: :short) if location.last_geocoded_at %></td>
+          <td><%= location.status %></td>
+          <td><%= link_to 'Show', [:admin, location] %></td>
+          <td><%= link_to 'Edit', edit_admin_location_path(location) %></td>
+          <td><%= link_to 'Destroy', [:admin, location], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <p>Showing <%= @locations.offset + 1 %> - <%= ((@locations.per_page + @locations.offset) < @locations.total_entries) ? (@locations.per_page + @locations.offset) : @locations.total_entries %> <%= "of #{@locations.total_entries}" unless @locations.total_pages == @locations.current_page  %> results.</p>
+  </div>
+  <div class="col-sm-6">
+    <%= will_paginate @locations, inner_window: 2, renderer: BootstrapPagination::Rails, class: 'pull-right' %>
+  </div>
+</div>

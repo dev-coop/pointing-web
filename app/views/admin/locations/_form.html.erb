@@ -1,0 +1,67 @@
+<%= form_for([:admin, @location]) do |f| %>
+  <% if @location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+      <ul>
+      <% @location.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :name%>
+    <%= f.text_field :name, class: 'form-control'  %>
+
+    <%= f.label :address %><br>
+    <%= f.text_field :address, class: 'form-control' %>
+
+    <br/>
+
+    <div class="panel panel-green">
+      <div class="panel-heading">
+        Geocoding and Elevation
+      </div>
+      <div class="panel-body">
+
+        <%= f.label :lat %>
+        <%= @location.lat || 'No latitude' %>
+
+        <span class="spacer-md"></span>
+
+        <%= f.label :lng || 'No longitude' %>
+        <%= @location.lng %>
+
+        <span class="spacer-md"></span>
+
+        <%= f.label :elevation %>
+        <%= @location.elevation  || 'No Elevation'%>
+
+        <span class="spacer-md"></span>
+
+        <%= link_to "Show Map", admin_location_path(@location) if @location.id %>
+
+      </div>
+      <div class="panel-footer">
+        Last updated <%= @location.last_geocoded_at || 'never' %>
+      </div>
+    </div>
+
+    <%= f.label :description %>
+    <%= f.text_field :description, class: 'form-control' %>
+
+    <%= f.label :status %>
+    <%= f.text_field :status, class: 'form-control' %>
+
+    <%= f.label :comments %>
+    <%= f.text_area :comments, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit (@location.id ? 'Update' : 'Save') + " Location", class: 'btn btn-primary'%>
+    <span class="spacer"></span>
+    <%= link_to 'Back', admin_locations_path, class: 'btn btn-primary btn-outline btn-sm' %>
+  </div>
+
+<% end %>
