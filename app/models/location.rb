@@ -1,5 +1,7 @@
 class Location < ActiveRecord::Base
 
+  default_scope { order('updated_at DESC') }
+
   validates_presence_of :name
 
   geocoded_by :address, latitude: :lat, longitude: :lng
