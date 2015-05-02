@@ -10,44 +10,58 @@
       </ul>
     </div>
   <% end %>
+  <div class="form-group">
+    <%= f.label :name%>
+    <%= f.text_field :name, class: 'form-control'  %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
     <%= f.label :address %><br>
-    <%= f.text_field :address %>
+    <%= f.text_field :address, class: 'form-control' %>
+
+    <br/>
+
+    <div class="panel panel-green">
+      <div class="panel-heading">
+        Geocoding and Elevation
+      </div>
+      <div class="panel-body">
+
+        <%= f.label :lat %>
+        <%= @location.lat || 'No latitude' %>
+
+        <span class="spacer-md"></span>
+
+        <%= f.label :lng || 'No longitude' %>
+        <%= @location.lng %>
+
+        <span class="spacer-md"></span>
+
+        <%= f.label :elevation %>
+        <%= @location.elevation  || 'No Elevation'%>
+
+        <span class="spacer-md"></span>
+
+        <%= link_to "Show Map", admin_location_path(@location) if @location.id %>
+
+      </div>
+      <div class="panel-footer">
+        Last updated <%= @location.last_geocoded_at || 'never' %>
+      </div>
+    </div>
+
+    <%= f.label :description %>
+    <%= f.text_field :description, class: 'form-control' %>
+
+    <%= f.label :status %>
+    <%= f.text_field :status, class: 'form-control' %>
+
+    <%= f.label :comments %>
+    <%= f.text_area :comments, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :lat %><br>
-    <%= f.text_field :lat %>
-  </div>
-  <div class="field">
-    <%= f.label :lng %><br>
-    <%= f.text_field :lng %>
-  </div>
-  <div class="field">
-    <%= f.label :elevation %><br>
-    <%= f.text_field :elevation %>
-  </div>
-  <div class="field">
-    <%= f.label :last_geocoded_at %><br>
-    <%= f.date_select :last_geocoded_at %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :comments %><br>
-    <%= f.text_area :comments %>
-  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit (@location.id ? 'Update' : 'Save') + " Location", class: 'btn btn-primary'%>
+    <span class="spacer"></span>
+    <%= link_to 'Back', admin_locations_path, class: 'btn btn-primary btn-outline btn-sm' %>
   </div>
+
 <% end %>
