@@ -1,35 +1,45 @@
-<h1 class="page-header">Locations</h1>
+<div class="row">
+  <h1 class="page-header">Locations</h1>
 
-<table class="table table-striped table-bordered table-hover dataTable no-footer" >
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Lat, Lng</th>
-      <th>Elevation</th>
-      <th>Last geocoded at</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="pull-right">
+    <%= will_paginate @locations, inner_window: 2, renderer: BootstrapPagination::Rails %>
+  </div>
 
-  <tbody>
-    <% @locations.each do |location| %>
-    <tr>
-      <td><%= location.name %></td>
-      <td><%= location.address %></td>
-      <td><%= location.lat %>, <%= location.lng %></td>
-      <td><%= location.elevation.to_i %> m</td>
-      <td><%= location.last_geocoded_at.to_formatted_s(:short) %></td>
-      <td><%= location.status %></td>
-      <td><%= link_to 'Show', [:admin, location] %></td>
-      <td><%= link_to 'Edit', edit_admin_location_path(location) %></td>
-      <td><%= link_to 'Destroy', [:admin, location], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+  <%= link_to 'New Location', new_admin_location_path, class: 'btn btn-primary btn-direction btn-left' %>
+  <div class="divider-md"></div>
 
-<br>
+  <table class="table table-striped table-bordered table-hover dataTable no-footer" >
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Lat, Lng</th>
+        <th>Elevation</th>
+        <th>Last geocoded at</th>
+        <th>Status</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-<%= link_to 'New Location', new_admin_location_path %>
+    <tbody>
+      <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.name %></td>
+        <td><%= location.address %></td>
+        <td><%= location.lat %>, <%= location.lng %></td>
+        <td><%= location.elevation.to_i %> m</td>
+        <td><%= location.last_geocoded_at.to_formatted_s(:short) %></td>
+        <td><%= location.status %></td>
+        <td><%= link_to 'Show', [:admin, location] %></td>
+        <td><%= link_to 'Edit', edit_admin_location_path(location) %></td>
+        <td><%= link_to 'Destroy', [:admin, location], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <%= link_to 'New Location', new_admin_location_path, class: 'btn btn-primary btn-direction btn-left' %>
+  <div class="pull-right">
+    <%= will_paginate @locations, inner_window: 2, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>

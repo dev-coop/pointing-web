@@ -29,12 +29,12 @@
 .divider-lg { height: 30px; }
 .divider-xl { height: 50px; }
 
-.space {
+.spacer {
   display: inline;
   padding: 5px;
 }
-.space-md { padding: 15px; }
-.space-lg { padding: 25px; }
+.spacer-md { padding: 15px; }
+.spacer-lg { padding: 25px; }
 
 // HTML, BODY, WRAPPERS
 .page-wrapper-marginless {
@@ -59,7 +59,9 @@
 // FOOTER
 
 // NAVIGATION
-
+ul.pagination {
+  margin: 0;
+}
 // give some right padding to fa icons in the side nav
 ul#side-menu li a i.fa {
   margin-right: 4px;

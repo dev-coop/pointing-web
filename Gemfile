@@ -38,6 +38,7 @@ gem 'simple-navigation'
 gem 'bower-rails'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'will_paginate-bootstrap'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
