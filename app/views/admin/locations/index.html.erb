@@ -5,8 +5,8 @@
     <tr>
       <th>Name</th>
       <th>Address</th>
-      <th>Lat</th>
-      <th>Lng</th>
+      <th>Lat, Lng</th>
+      <th>Elevation</th>
       <th>Last geocoded at</th>
       <th>Status</th>
       <th colspan="3"></th>
@@ -18,9 +18,9 @@
     <tr>
       <td><%= location.name %></td>
       <td><%= location.address %></td>
-      <td><%= location.lat %></td>
-      <td><%= location.lng %></td>
-      <td><%= location.last_geocoded_at %></td>
+      <td><%= location.lat %>, <%= location.lng %></td>
+      <td><%= location.elevation.to_i %> m</td>
+      <td><%= location.last_geocoded_at.to_formatted_s(:short) %></td>
       <td><%= location.status %></td>
       <td><%= link_to 'Show', [:admin, location] %></td>
       <td><%= link_to 'Edit', edit_admin_location_path(location) %></td>
