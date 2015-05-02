@@ -12,7 +12,7 @@
 <%= search_form_for [:admin, @q], class: 'form-inline' do |f| %>
   <div class="row">
     <div class="col-sm-6">
-      Show <%= select_tag :per_page,  options_for_select([2,10, 20, 50, 100], params[:per_page]), class: 'form-control', onchange: '$("#location_search").submit();' %> entries
+      Show <%= select_tag :per_page,  options_for_select([10, 20, 50, 100], params[:per_page]), class: 'form-control', onchange: '$("#location_search").submit();' %> entries
     </div>
     <div class="col-sm-6">
       <div class="search-form pull-right">
