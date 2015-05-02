@@ -4,7 +4,8 @@ class Admin::LocationsController < Admin::ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all.paginate(:page => params[:page], :per_page => 2)
+    @q = Location.ransack(params[:q])
+    @locations = @q.result(distinct: true).paginate(:page => params[:page], :per_page => params[:per_page])
   end
 
   # GET /locations/1
