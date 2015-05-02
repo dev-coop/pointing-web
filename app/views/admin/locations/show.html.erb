@@ -1,3 +1,8 @@
+<% content_for :head do %>
+  <script src="//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry" type="text/javascript"></script>
+  <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
+<% end %>
+
 <h1><%= @location.name %></h1>
 
 <div>
@@ -45,30 +50,30 @@
   <%= @location.comments %>
 </p>
 
-<script src="//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry" type="text/javascript"></script>
-<script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
+<script type="text/javascript">
+  $(function() {
 
-<script>
-handler = Gmaps.build('Google');
-handler.buildMap({  
-  provider: {
-    zoom: 16,
-    center: new google.maps.LatLng(<%= @location.lat %>, <%= @location.lng %>)
-  }, 
-  internal: {id: 'map'}
-  }, function(){
-  markers = handler.addMarkers([
-    {
-      "lat": <%= @location.lat %>,
-      "lng": <%= @location.lng %>,
-      "infowindow": "<%= @location.name %><br><%= @location.address %>",
-    }
-  ]);
-  handler.bounds.extendWith(markers);
-  
-  // JR: with a single marker we don't need to fitMapToBounds, else it zooms in fully
-  //handler.fitMapToBounds();
-});
+    handler = Gmaps.build('Google');
+    handler.buildMap({
+      provider: {
+        zoom: 16,
+        center: new google.maps.LatLng(<%= @location.lat %>, <%= @location.lng %>)
+      },
+      internal: {id: 'map'}
+      }, function(){
+      markers = handler.addMarkers([
+        {
+          "lat": <%= @location.lat %>,
+          "lng": <%= @location.lng %>,
+          "infowindow": "<%= @location.name %><br><%= @location.address %>",
+        }
+      ]);
+      handler.bounds.extendWith(markers);
+
+      // JR: with a single marker we don't need to fitMapToBounds, else it zooms in fully
+      //handler.fitMapToBounds();
+    });
+  });
 </script>
 
 <%= link_to 'Edit', edit_admin_location_path(@location) %> |
