@@ -1,28 +1,41 @@
-== README
+# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ruby version
+Ruby 2.2.2
 
-Things you may want to cover:
+## System dependencies
+* ruby 2.2.2
+* gem (ruby-gems)
+* bundler
 
-* Ruby version
+## Application Configuration
+The following sections describe how to configure and use the various parts of the application.
 
-* System dependencies
+### API Configuration
+This section describes how to setup and access the API.
 
-* Configuration
+Access to the API is requires authentication with a token.  This token should be passed in with the request header.  Here is an example using curl:
 
-* Database creation
+```sh
+$ curl -H "Authorization: Token token=33a3d11cc6824dcf8af9ee65cd184ff4" \
+```
 
-* Database initialization
+In rails development mode the api can be accessed at `api.[DOMAIN]` by default. Using the defaults for instance, you can access locations using version 1 of the API here:
 
-* How to run the test suite
+- http://api.localhost:3000/v1/locations
 
-* Services (job queues, cache servers, search engines, etc.)
+This setup requires you to add this to /etc/hosts on OS X or C:\WINDOWS\system32\drivers\etc\hosts on Windows
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+```
+127.0.0.1   api.localhost
+```
+# Database creation
+TODO
+# Database initialization
+TODO
+# How to run the test suite
+TODO
+# Services (job queues, cache servers, search engines, etc.)
+TODO
+# Deployment instructions
+TODO
