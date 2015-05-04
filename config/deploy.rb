@@ -38,13 +38,13 @@ namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
   end
-end
 
-desc "Install bower"
-task :install_bower do
-  on roles(:web) do
-    within release_path do
-      execute :rake, 'bower:install CI=true'
+  desc "Install bower"
+  task :install_bower do
+    on roles(:web) do
+      within release_path do
+        execute :rake, 'bower:install[-F] CI=true'
+      end
     end
   end
 end

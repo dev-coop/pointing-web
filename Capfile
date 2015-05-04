@@ -13,7 +13,6 @@ require 'capistrano/rails'
 #
 require 'capistrano/rvm'
 require 'capistrano/bundler'
-require 'capistrano/bower'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 
