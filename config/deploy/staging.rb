@@ -6,4 +6,4 @@ set :rvm_ruby_version, '2.2.2@getpointing-staging'
 
 set :ssh_options, { forward_agent: true }
 set :deploy_to, '/home/rails/staging'
-set :branch, 'feature/deployment'
+set :branch, 'develop'
