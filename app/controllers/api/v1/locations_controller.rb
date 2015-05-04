@@ -1,6 +1,6 @@
 module Api
   module V1
-    class LocationsController < ApplicationController
+    class LocationsController < Api::V1::ApiController
       respond_to :json
 
       def index

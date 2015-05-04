@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # http://localhost:3000.  To get is working you just need to add this to /etc/hosts:
   #   127.0.0.1   api.localhost
 
+  # TODO: let api domain constraint be configurable
   constraints domain: /^api\.*./ do
     namespace :api, path: '', defaults: { format: :json } do
       namespace :v1 do
