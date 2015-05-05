@@ -27,11 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
+gem 'unicorn'
 gem 'awesome_print'
 gem 'devise'
 gem 'simple-navigation'
@@ -54,7 +50,10 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'factory_girl_rails'
   gem 'capybara'
-
+  gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-unicorn'
 end
 
 
