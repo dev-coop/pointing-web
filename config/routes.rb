@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   #   127.0.0.1   api.localhost
 
   # TODO: let api domain constraint be configurable
-  constraints domain: /^api\.*./ do
+  constraints host: /^api\.*./ do
     namespace :api, path: '', defaults: { format: :json } do
       namespace :v1 do
         resources :locations

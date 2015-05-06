@@ -7,10 +7,11 @@ class Api::V1::ApiController < ApplicationController
       # TODO accept token via url param
       true
     else
-      authenticate_or_request_with_http_token do |token, options|
+      # TODO reenable token requirement
+#      authenticate_or_request_with_http_token do |token, options|
         # TODO check token
         true
-      end
+#      end
     end
   end
 
