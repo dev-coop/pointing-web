@@ -10,6 +10,7 @@ class Location < ActiveRecord::Base
   # The Google Geocode API does not return elevation, but Google does provide an Elevation API.  We'll make a second
   # call to get elevation after the first call geocodes the location.
   before_save :get_elevation
+  before_save :geocode_timestamp
 
   private
 
@@ -21,6 +22,12 @@ class Location < ActiveRecord::Base
       uri = URI.parse(url)
       response = Net::HTTP.get(uri)
       self.elevation = JSON.parse(response)['results'].first['elevation'].to_f
+    end
+  end
+
+  def geocode_timestamp
+    if self.lat && self.lng
+      self.last_geocoded_at = Time.now
     end
   end
 
