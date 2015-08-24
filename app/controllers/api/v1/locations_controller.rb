@@ -9,8 +9,7 @@ module Api
         #   .limit(5)
         #   .pluck(:id, :name, :address, :lat, :lng, :elevation, :distance)
 
-
-        me = Location.new(address: 'Post Falls, Id').geocode
+        me = Location.new(location_params)
 
         locations = Location.near(me)
 
@@ -19,8 +18,12 @@ module Api
         respond_with locations
       end
 
+      private
 
+      # Never trust parameters from the scary internet, only allow the white list through.
+      def location_params
+        params.permit(:lat, :lng)
+      end
     end
   end
-
 end
