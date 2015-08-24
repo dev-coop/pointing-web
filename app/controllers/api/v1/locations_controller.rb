@@ -11,7 +11,7 @@ module Api
 
         me = Location.new(location_params)
 
-        locations = Location.near(me)
+        locations = Location.near(me).reorder("RANDOM()")
 
         # locations.each { |l| l << l.distance(me) }
 
