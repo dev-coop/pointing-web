@@ -2,19 +2,13 @@ module Api
   module V1
     class LocationsController < Api::V1::ApiController
       respond_to :json
-
+      RESULT_TOTAL = 10
       def index
-        # locations = Location.where('last_geocoded_at IS NOT NULL')
-        #   .reorder("RANDOM()")
-        #   .limit(5)
-        #   .pluck(:id, :name, :address, :lat, :lng, :elevation, :distance)
-
         me = Location.new(location_params)
-
-        locations = Location.near(me).reorder("RANDOM()")
-
-        # locations.each { |l| l << l.distance(me) }
-
+        local_locations = Location.near(me, 25).reorder("RANDOM()").limit(5)
+        any_locations = Location.where('last_geocoded_at IS NOT NULL').where('id NOT IN (?)', local_locations.ids).reorder("RANDOM()").limit(RESULT_TOTAL - local_locations.size)
+        locations = local_locations + any_locations
+        locations.shuffle
         respond_with locations
       end
 
